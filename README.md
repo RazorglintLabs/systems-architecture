@@ -51,20 +51,23 @@ This repository documents the architectural relationships between multiple syste
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│            OPERATIONAL INTERFACES                    │  ← Human control
-│       Cockpits · CLIs · Approval Surfaces            │
+│            OPERATOR INTERFACE                        │  ← Human control
+│       Cockpits · CLI · Approval Surface              │
 ├─────────────────────────────────────────────────────┤
 │            CONTROL / ORCHESTRATION                   │  ← System coordination
-│       State Machines · Agent Routing · Scheduling    │
+│       State Machines · Routing · Scheduling           │
 ├─────────────────────────────────────────────────────┤
-│            GOVERNANCE INFRASTRUCTURE                 │  ← Safety rules & execution control
-│       Policy Enforcement · Command Gating · Signing  │
+│            SAR GOVERNANCE                            │  ← Safety rules & execution control
+│       Policy Enforcement · Command Gating             │
 ├─────────────────────────────────────────────────────┤
-│            VERIFICATION / LEDGER SYSTEMS             │  ← Audit & proof
-│       Hash Chains · Append-Only Records · Proofs     │
+│            VERIFICATION                              │  ← Audit & proof
+│       Phantom Ledger                                  │
 ├─────────────────────────────────────────────────────┤
-│            EXECUTION SYSTEMS                         │  ← Automation / AI
-│       AI Reasoning · Content Generation · Crypto Ops │
+│            EXECUTION SYSTEMS                         │  ← Automation
+│       Automation Engines · Truthpack                  │
+├─────────────────────────────────────────────────────┤
+│            AI REASONING                              │  ← Intelligence
+│       CTLM                                            │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -219,27 +222,26 @@ When safety checks fail, systems deny execution rather than continue operating. 
 │              Cockpits · CLI · Approval Surface               │
 └──────────────────────────┬───────────────────────────────────┘
                            │
-            ┌──────────────┼──────────────┐
-            ▼              ▼              ▼
-      ┌──────────┐  ┌───────────┐  ┌───────────┐
-      │Truthpack │  │ CalledIt  │  │  Control  │
-      │ Engine   │  │  Platform │  │  Cockpit  │
-      └────┬─────┘  └───────────┘  └─────┬─────┘
-           │                              │
-           └──────────────┬───────────────┘
-                          ▼
-              ┌───────────────────────┐
-              │   SAR Governance      │
-              │   Policy Enforcement  │
-              │   Command Gating      │
-              └───────────┬───────────┘
-                          │
-                ┌─────────┼─────────┐
-                ▼                   ▼
+              ┌────────────────────────┐
+              │  CONTROL / ORCHESTRATION│
+              │  State Machines · Routing│
+              └────────────┬───────────┘
+                           │
+              ┌────────────────────────┐
+              │    SAR GOVERNANCE       │
+              │  Policy · Command Gating│
+              └────────────┬───────────┘
+                           │
+              ┌────────────────────────┐
+              │     VERIFICATION        │
+              │    Phantom Ledger       │
+              └────────────┬───────────┘
+                           │
+                ┌──────────┼──────────┐
+                ▼                     ▼
         ┌──────────────┐   ┌──────────────┐
-        │    CTLM      │   │   Phantom    │
-        │  Reasoning   │   │   Ledger     │
-        │  & Memory    │   │ Verification │
+        │  Execution   │   │     CTLM     │
+        │  Truthpack   │   │  AI Reasoning│
         └──────────────┘   └──────────────┘
 ```
 
