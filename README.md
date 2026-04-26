@@ -1,7 +1,7 @@
 <h1 align="center">Razorglint Systems Architecture</h1>
 
 <p align="center">
-  <strong>15 systems. 3,300+ verified tests. Zero trust assumptions.</strong><br>
+  <strong>15 systems. 3,400+ verified tests. Zero trust assumptions.</strong><br>
   <em>Every claim has a hash. Every action has a receipt. Every system proves itself or gets denied.</em>
 </p>
 
@@ -38,13 +38,14 @@ These are not targets. These are **live test results from shipped code**.
 | Metric | Count | Source |
 |--------|-------|--------|
 | Independent systems | **15** | This repository |
-| Verified tests (Python + Rust) | **3,374** | Aggregate across all system test suites (2026-04-26) |
+| Verified tests (Python + Rust) | **3,505** | Aggregate across all system test suites (2026-04-26) |
 | OpenClaw governed agent tests | **1,578** passed, 156 skipped | 45 test modules, dual-write + policy + trust + truthpack |
 | Prestige-Forge proof engine tests | **690** core | 15 constitutional families, 19 core modules |
 | SAR governance tests | **497** Python + **13** Rust verification | 86 inventoried endpoints, fail-closed |
 | EU AI Act evidence compiler tests | **194** (147 excluding env-sensitive chain replay) | 6 EU AI Act articles, 43 source files |
 | Rust infrastructure crate tests | **132** across 6 crates | ironcache, ironledger, ironvec, irontext, pf_verify, sar_verify |
 | FleetSim fleet governance tests | **103** | Trust plane, severity ladder, transition receipts |
+| Command Guardian enforcement tests | **131** | Hardened prototype; 35 adversarial bypass tests + DENY receipt sanitization |
 | Voidlock execution cage modules | **8** core + CLI | stdlib-only, deny-by-default |
 | Blackiron cryptographic modules | **5** (hash, chain, merkle, clock, receipt) | Rust, domain-separated, deterministic |
 
@@ -63,7 +64,7 @@ cargo test
 ```
 
 Expected:
-- 3,300+ tests passing
+- 3,400+ tests passing
 - Fail-closed behavior on invalid policy
 - Receipt chain verification OK
 
@@ -237,13 +238,14 @@ Capability (deny-by-default) → Budget (monotonic ↓) → Chain (append-only)
 
 ### Command Guardian
 
-**Hardened local-first command enforcement prototype. Blocks risky terminal commands, emits hash-chained audit receipts, and now sanitizes denied command evidence safely.**
+**Hardened local-first command enforcement prototype. Blocks risky terminal commands, emits hash-chained audit receipts, and sanitizes denied command evidence safely.**
 
 - Current audit: **131/131 tests passing** after emergency security remediation.
 - Critical bypass classes closed with adversarial tests.
 - DENY receipts store command hashes instead of raw dangerous command strings.
 - Token issuance is now audit-receipted.
-- Not production-ready, not SAR-integrated, and receipt signing remains deferred.
+- Version corrected to **0.2.0-security-hardening**; earlier `v1.0.0` release marked superseded.
+- Not production-ready, not certified, not SAR-integrated, and receipt signing remains deferred.
 
 ---
 
@@ -337,10 +339,11 @@ These are not aspirations. These are **enforced constraints** with hard-stop tri
 
 Live test output captured under real conditions. Not mockups.
 
-![SAR 497 Tests](./assets/proof/proof_sar_test_497_pass.jpg)
-![Prestige-Forge 690 Tests](./assets/proof/proof_pf_test_690_pass.jpg)
+![Aggregate Summary](./assets/proof/proof_aggregate_summary.jpg)
 ![OpenClaw 1578 Tests](./assets/proof/proof_openclaw_test_1578_pass.jpg)
+![SAR 497 Tests](./assets/proof/proof_sar_test_497_pass.jpg)
 ![FleetSim 103 Tests](./assets/proof/proof_fleetsim_test_103_pass.jpg)
+![Prestige-Forge 690 Tests](./assets/proof/proof_pf_test_690_pass.jpg)
 ![EU AI Act 194 Tests](./assets/proof/proof_euai_test_194_full.jpg)
 ![Rust Modules 132 Tests](./assets/proof/proof_rust_modules_test_132_pass.jpg)
 ![Voidlock 54 Tests](./assets/proof/proof_voidlock_test_54_pass.jpg)
