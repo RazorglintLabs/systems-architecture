@@ -1,7 +1,7 @@
 <h1 align="center">Razorglint Systems Architecture</h1>
 
 <p align="center">
-  <strong>15 systems. 1,100+ verified tests. Zero trust assumptions.</strong><br>
+  <strong>15 systems. 3,300+ verified tests. Zero trust assumptions.</strong><br>
   <em>Every claim has a hash. Every action has a receipt. Every system proves itself or gets denied.</em>
 </p>
 
@@ -38,11 +38,13 @@ These are not targets. These are **live test results from shipped code**.
 | Metric | Count | Source |
 |--------|-------|--------|
 | Independent systems | **15** | This repository |
-| Verified tests (Python + Rust) | **1,178+** | Aggregate across all system test suites |
-| Prestige-Forge proof engine tests | **734** (678 core + 56 UI) | 15 constitutional families, 19 core modules |
-| SAR governance tests | **291** (170 Python, 100 Rust, 21 cross-verification) | 86 inventoried endpoints, fail-closed |
-| Rust cryptographic primitive tests | **87** across 4 crates | ironcache, ironledger, ironvec, irontext |
-| EU AI Act evidence compiler tests | **66** across 5 implementation blocks | 6 EU AI Act articles, 43 source files |
+| Verified tests (Python + Rust) | **3,374** | Aggregate across all system test suites (2026-04-26) |
+| OpenClaw governed agent tests | **1,578** passed, 156 skipped | 45 test modules, dual-write + policy + trust + truthpack |
+| Prestige-Forge proof engine tests | **690** core | 15 constitutional families, 19 core modules |
+| SAR governance tests | **497** Python + **13** Rust verification | 86 inventoried endpoints, fail-closed |
+| EU AI Act evidence compiler tests | **194** (147 excluding env-sensitive chain replay) | 6 EU AI Act articles, 43 source files |
+| Rust infrastructure crate tests | **132** across 6 crates | ironcache, ironledger, ironvec, irontext, pf_verify, sar_verify |
+| FleetSim fleet governance tests | **103** | Trust plane, severity ladder, transition receipts |
 | Voidlock execution cage modules | **8** core + CLI | stdlib-only, deny-by-default |
 | Blackiron cryptographic modules | **5** (hash, chain, merkle, clock, receipt) | Rust, domain-separated, deterministic |
 
@@ -61,7 +63,7 @@ cargo test
 ```
 
 Expected:
-- 1,100+ tests passing
+- 3,300+ tests passing
 - Fail-closed behavior on invalid policy
 - Receipt chain verification OK
 
@@ -126,7 +128,7 @@ SAR is intentionally non-AI. Deterministic. Predictable. The system that approve
 
 **Turns intent into cryptographic proof. Not assertions — SHA-256 verified artifacts.**
 
-- 734 tests. 15 constitutional families. 19 core modules. All families closed.
+- 690 core tests. 15 constitutional families. 19 core modules. All families closed.
 - Client Zero proof: **25/25 PASS, 15/15 SAFE TO SAY** — real verification against real claims.
 - Claims Safety Engine: every marketing statement validated against evidence before it can be published. Unsafe claim = blocked.
 - Proof workflow: vault → receipt lineage → run engine → gate execution → evidence → proof mint → manifest → bundle. Each step produces verifiable output or the chain stops.
@@ -175,7 +177,7 @@ Capability (deny-by-default) → Budget (monotonic ↓) → Chain (append-only)
 - **ironvec** — vector operations for embedding pipelines (24 tests)
 - **irontext** — text processing for structured extraction (14 tests)
 
-87 tests. All passing. All stdlib + minimal deps.
+132 tests across 6 crates. All passing. All stdlib + minimal deps.
 
 ---
 
@@ -183,7 +185,7 @@ Capability (deny-by-default) → Budget (monotonic ↓) → Chain (append-only)
 
 **Read-only evidence compiler mapped to EU AI Act Articles 9, 11, 12, 13, 14, 15.**
 
-- 43 source files. 8 adapters. 66 tests. All passing.
+- 43 source files. 8 adapters. 194 tests (147 excluding env-sensitive SAR chain replay).
 - Consumes sealed outputs from Prestige-Forge, SAR, ReasonForge, PolicySourceEngine, and ChessClock through read-only adapters.
 - Produces article-mapped evidence packs, gap registers, and compliance readiness reports.
 - **Never writes back** into any source system. Data flows one direction: sovereign → adapter → report → customer.
@@ -206,6 +208,7 @@ Capability (deny-by-default) → Budget (monotonic ↓) → Chain (append-only)
 
 **Autonomous agent team running under SAR enforcement. Every agent action receipted. Every output exportable as a Truthpack.**
 
+- 1,578 tests passing. 45 test modules covering dual-write, policy, trust, denial, truthpack, red-team, and reconciliation.
 - Dual-write receipt chain model — agents produce evidence, SAR enforces policy.
 - Three-lane architecture: upstream (read-only, pinned), agent stack (Razorglint wrapper), docs (frozen).
 - No agent defines its own rules. No agent bypasses governance. No output without a receipt.
@@ -234,10 +237,13 @@ Capability (deny-by-default) → Budget (monotonic ↓) → Chain (append-only)
 
 ### Command Guardian
 
-**Local-first CLI seatbelt. Run commands safely, block dangerous ones, emit hash-chained audit receipts.**
+**Hardened local-first command enforcement prototype. Blocks risky terminal commands, emits hash-chained audit receipts, and now sanitizes denied command evidence safely.**
 
-- v1.0.0 shipped. MIT licensed. pip/pipx installable.
-- No cloud. No telemetry. Terminal-native.
+- Current audit: **131/131 tests passing** after emergency security remediation.
+- Critical bypass classes closed with adversarial tests.
+- DENY receipts store command hashes instead of raw dangerous command strings.
+- Token issuance is now audit-receipted.
+- Not production-ready, not SAR-integrated, and receipt signing remains deferred.
 
 ---
 
@@ -245,8 +251,9 @@ Capability (deny-by-default) → Budget (monotonic ↓) → Chain (append-only)
 
 **Heartbeat and distress-pulse mechanism for fleet-scale governance.**
 
+- 103 tests passing. Trust plane enforcement, severity ladder, transition receipts, outage handling.
 - Fleet Reflex Loop: routine heartbeat → distress pulse → reflex receipt.
-- Early-stage. Doctrine frozen. Implementation in progress.
+- Calibration framework with coefficient-of-variation analysis and provisional candidate detection.
 
 ---
 
@@ -323,6 +330,22 @@ These are not aspirations. These are **enforced constraints** with hard-stop tri
 - This is not "AI compliance in a box." It maps evidence to articles and tells you where the gaps are.
 - This is not a SaaS platform. It runs on your infrastructure, under your control.
 - This does not say "certified" or "compliant." It says "here is the proof — you decide."
+
+---
+
+## Proof Snapshots
+
+Live test output captured under real conditions. Not mockups.
+
+![SAR 497 Tests](./assets/proof/proof_sar_test_497_pass.jpg)
+![Prestige-Forge 690 Tests](./assets/proof/proof_pf_test_690_pass.jpg)
+![OpenClaw 1578 Tests](./assets/proof/proof_openclaw_test_1578_pass.jpg)
+![FleetSim 103 Tests](./assets/proof/proof_fleetsim_test_103_pass.jpg)
+![EU AI Act 194 Tests](./assets/proof/proof_euai_test_194_full.jpg)
+![Rust Modules 132 Tests](./assets/proof/proof_rust_modules_test_132_pass.jpg)
+![Voidlock 54 Tests](./assets/proof/proof_voidlock_test_54_pass.jpg)
+![Blackiron 53 Tests](./assets/proof/proof_blackiron_test_53_pass.jpg)
+![Command Guardian Hardened Prototype](./assets/proof/proof_command_guardian_131_pass_hardened.jpg)
 
 ---
 
