@@ -249,7 +249,7 @@ Capability (deny-by-default) → Budget (monotonic ↓) → Chain (append-only)
 - Critical bypass classes closed with adversarial tests.
 - DENY receipts store command hashes instead of raw dangerous command strings.
 - Token issuance is now audit-receipted.
-- Version corrected to **0.2.0-security-hardening**; earlier `v1.0.0` release marked superseded.
+- Version corrected to **0.2.0**; current status: **hardened prototype**. Earlier `v1.0.0` release marked superseded.
 - Not production-ready, not certified, not SAR-integrated, and receipt signing remains deferred.
 
 ---
