@@ -88,6 +88,7 @@ COMMON CLAIM                           RAZORGLINT EVIDENCE POSTURE
 "Compliant with regulations"           We map evidence and name gaps. We do not claim certification by default.
 
 "We take security seriously"           Covered invalid states fail closed instead of quietly continuing.
+```
 
 ---
 
