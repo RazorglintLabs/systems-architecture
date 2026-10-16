@@ -10,6 +10,12 @@
 | Viventia / VEAC, Oct 2026 | Local-first evidence cockpit and separate independent adversarial challenge are under active development | Private Viventia collaboration and VEAC project documents reviewed | Private evidence; no live customer deployment, universal adversarial PASS, SIEM/EDR equivalence or certification claimed. |
 | GCA Stack, Oct 2026 | Acquisition-grade **candidate** integration project | Private Phase 0 repo, source/admission framework | Recovery, ownership and qualification gates remain; not a finished six-component integrated product. |
 
+## Cross-checked GitHub Actions metadata — 16 October 2026
+
+- [CDD Windows executable run 38893213993](https://github.com/RazorglintLabs/ComplianceDriftDetector/actions/runs/38893213993): completed / success, head `662f84caa2ed372abde6a83245c58b466e52ce94`.
+- [CDD qualification run 38893214199](https://github.com/RazorglintLabs/ComplianceDriftDetector/actions/runs/38893214199): completed / success, **same source head**.
+- CDD's [maintained release-status note](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/docs/RELEASE_STATUS.md) records the **76-pass** matrix and hashes. CI result metadata was checked separately; no local rerun is claimed.
+
 ## Historical image and claim policy
 
 The April images in `assets/proof/` remain historical exhibits. They are **not** being re-dated or replaced with inferred October results. The 27/28 historical “approved claim” labels, where present, were assessments at their recorded dates; the current landing page supersedes them for current-facing statements.
