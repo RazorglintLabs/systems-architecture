@@ -1,7 +1,7 @@
 # Architecture Layers and Authority Boundaries
 **16 October 2026 — Reference design, NOT a completed integrated product**
 
-\`\`\`text
+```text
 SOURCE + SCOPE -> AUTHORIZED POLICY
                       |
                allow / deny / unresolved
@@ -22,7 +22,7 @@ SOURCE + SCOPE -> AUTHORIZED POLICY
                       |
                       v
                 HUMAN DECISION
-\`\`\`
+```
 
 ## Non-negotiable seams
 
@@ -41,10 +41,10 @@ SOURCE + SCOPE -> AUTHORIZED POLICY
 
 The Governed AI Control & Assurance Stack proposes a source-bound buyer pathway:
 
-\`\`\`text
+```text
 SAR policy -> OpenClaw covered actions -> Voidlock constraints
      -> Viventia evidence + Blackiron crypto -> VEAC challenge
-\`\`\`
+```
 
 **This is a proposed responsibility map.** GCA remains in Phase 0 source recovery, ownership/dependency reconciliation and component admission. Candidate components include SAR, Viventia, VEAC, OpenClaw, Voidlock, Blackiron, optional FleetSim. Every component must be explicitly **ADMITTED**, **BLOCKED** or **EXCLUDED**. Historical test counts do not imply present admission or a finished joined product.
 

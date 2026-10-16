@@ -18,7 +18,7 @@ These are **selected** technology profiles. Selection is editorial, not a licens
 
 ## 03 — Viventia
 - **Problem:** Incident response/customer workflows need scoped, intelligible evidence and handoff.
-- **Design:** Local-first scope identity, customer/deployment binding, two intended cockpit projections and isolated deployment qualification. Canonical private source retains legacy \`razorglint-sentinel\` naming for compatibility.
+- **Design:** Local-first scope identity, customer/deployment binding, two intended cockpit projections and isolated deployment qualification. Canonical private source retains legacy `razorglint-sentinel` naming for compatibility.
 - **Category:** Private V1 development, documented P00–P02 qualification; later gates are separate.
 - **Non-claims:** SIEM/EDR, autonomous agents in V1.0, positive incident authorization, general hosted multi-tenancy.
 

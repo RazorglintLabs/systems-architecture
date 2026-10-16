@@ -54,7 +54,7 @@ Razorglint Labs builds systems around **governance, evidence, verification, loca
 
 **Conceptual responsibilities—not proof that all these components are already connected.**
 
-\`\`\`text
+```text
                       HUMAN / EXPLICIT AUTHORITY
                                  |
                     permitted purpose + scope
@@ -95,7 +95,7 @@ Razorglint Labs builds systems around **governance, evidence, verification, loca
                    | VEAC · buyer · operator    |
                    | accepts / challenges claim |
                    +----------------------------+
-\`\`\`
+```
 
 **Authority flows from an explicit owner or policy boundary. Evidence flows out from the covered operation.** A verifier is not an authority issuer. A product cannot certify itself. A digest is not source authenticity, a history trace is not completeness, and a simulated fleet is not a fielded fleet.
 
@@ -176,7 +176,7 @@ Read [full system profiles](docs/SYSTEM_PROFILES_2026-10-16.md) for mechanics, s
 
 **Mechanisms:** accepts **operator-supplied structured** policy claims and **operator-preclassified dated observations**; computes ALIGNED, DRIFTING, VIOLATED and UNDECLARED; exposes recovered history, missing mappings, separate unmatched behavior findings, JSON/HTML/Markdown reports and v2 JSON consistency verification.
 
-**Current result:** [76 regression tests passed](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/docs/RELEASE_STATUS.md) in the 16 Oct Windows/Linux Python 3.11/3.12 qualification. Owner accepted **unsigned Windows x64 v0.2 controlled evaluation** at qualified source commit \`662f84caa2ed372abde6a83245c58b466e52ce94\`.
+**Current result:** [76 regression tests passed](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/docs/RELEASE_STATUS.md) in the 16 Oct Windows/Linux Python 3.11/3.12 qualification. Owner accepted **unsigned Windows x64 v0.2 controlled evaluation** at qualified source commit `662f84caa2ed372abde6a83245c58b466e52ce94`.
 
 **Not claimed:** freeform log/PDF analysis, continuous monitoring, authenticated source truth, digitally signed publisher identity, enterprise distribution, certification or automatic legal compliance.
 
@@ -287,7 +287,7 @@ There is no legitimate one-command procedure to clone fifteen **private** system
 
 For an actually public code path, start with [Compliance Drift Detector](https://github.com/RazorglintLabs/ComplianceDriftDetector):
 
-1. Identify source commit \`662f84caa2ed372abde6a83245c58b466e52ce94\` and consult the [release-status receipt](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/docs/RELEASE_STATUS.md).
+1. Identify source commit `662f84caa2ed372abde6a83245c58b466e52ce94` and consult the [release-status receipt](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/docs/RELEASE_STATUS.md).
 2. Inspect the [documented self-service quickstart](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/SELF_SERVICE_QUICKSTART.md) and current license/claim boundaries.
 3. Check [Windows build Actions 38893213993](https://github.com/RazorglintLabs/ComplianceDriftDetector/actions/runs/38893213993) and [cross-platform test Actions 38893214199](https://github.com/RazorglintLabs/ComplianceDriftDetector/actions/runs/38893214199) against that **same** commit.
 4. Reproduce supported example/verification commands in a matching environment. Record PASS, FAIL, SKIP and any changed source identity.
