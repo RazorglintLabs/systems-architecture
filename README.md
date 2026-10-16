@@ -1,372 +1,320 @@
 <h1 align="center">Razorglint Systems Architecture</h1>
+<p align="center"><strong>Governed actions · Evidence continuity · Independent challenge · Verifiable handoff</strong></p>
+<p align="center"><strong>15 selected systems · 3,505 historical passing test executions · Current October 2026 results</strong><br/>
+<sub>3,505 is the dated 26 April 2026 audit, not a fresh October total or certification.</sub></p>
 
 <p align="center">
-  <strong>15 systems. 3,400+ verified tests. Zero trust assumptions.</strong><br>
-  <em>Every claim has a hash. Every action has a receipt. Every system proves itself or gets denied.</em>
+<img src="https://img.shields.io/badge/Python-3.11%2B-blue?style=flat-square" alt="Python"/>
+<img src="https://img.shields.io/badge/Rust-2021-orange?style=flat-square" alt="Rust"/>
+<img src="https://img.shields.io/badge/FastAPI-API%20surfaces-009688?style=flat-square" alt="FastAPI"/>
+<img src="https://img.shields.io/badge/Ed25519-selected%20systems-red?style=flat-square" alt="Ed25519"/>
+<img src="https://img.shields.io/badge/SHA--256-integrity%20checks-orange?style=flat-square" alt="SHA-256"/>
+<img src="https://img.shields.io/badge/AES--256--GCM-selected%20products-blueviolet?style=flat-square" alt="AES-256-GCM"/>
+<img src="https://img.shields.io/badge/Local--First-product%20scoped-black?style=flat-square" alt="Local-first"/>
 </p>
+<p align="center"><sub>Badges identify technologies used by particular assets. They are not universal product, audit or deployment claims.</sub></p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.12-blue?style=flat-square" alt="Python">
-  <img src="https://img.shields.io/badge/Rust-2021-orange?style=flat-square" alt="Rust">
-  <img src="https://img.shields.io/badge/FastAPI-async-009688?style=flat-square" alt="FastAPI">
-  <img src="https://img.shields.io/badge/Ed25519-signed-critical?style=flat-square" alt="Ed25519">
-  <img src="https://img.shields.io/badge/SHA--256-hash--chained-orange?style=flat-square" alt="SHA-256">
-  <img src="https://img.shields.io/badge/AES--256--GCM-sealed-blueviolet?style=flat-square" alt="AES-256">
-  <img src="https://img.shields.io/badge/zero--cloud--dependency-local--first-black?style=flat-square" alt="Local-First">
-</p>
+> **If a claim matters, bind it to evidence. If an action matters, record the authority. If proof is missing, expose that gap instead of inventing a PASS.**
+
+**Reviewed 16 October 2026.** The architecture documents real engineering alongside historical proofs, prototypes, private development and candidate integrations. It is **not a unified public product**, an independent security certification or permission to use proprietary code.
+
+**Explore:** [Evidence register](PUBLIC_EVIDENCE_REGISTER_2026-10-16.md) · [15 detailed system profiles](docs/SYSTEM_PROFILES_2026-10-16.md) · [Architecture boundaries](docs/ARCHITECTURE_LAYERS_2026-10-16.md) · [Verification playbook](docs/VERIFICATION_PLAYBOOK.md) · [IP and delivery boundaries](docs/IP_AND_DELIVERY_BOUNDARIES.md) · [Pain-to-Proof map](https://github.com/RazorglintLabs/razorglint-pain-to-proof-map) · [Damian Ketting portfolio](https://github.com/RazorglintLabs/damian-ketting-ai-systems-portfolio)
 
 ---
 
-## The Short Version
+## The short version
 
-Most automation platforms tell you they're safe. These ones **prove it cryptographically** — or they refuse to run.
+An operationally serious system needs answers to **five practical questions**:
 
-This is the architecture map for the Razorglint Labs system portfolio. Not a concept deck. Not a roadmap. **Shipped infrastructure** across governance enforcement, cryptographic verification, AI reasoning orchestration, regulatory evidence compilation, and zero-trust execution — all independently operable, all producing tamper-evident proof chains.
+1. **Authority:** Who or what permitted the covered operation, under which explicit policy and scope?
+2. **Observation:** What actually happened? Which evidence, identity and time context was recorded?
+3. **Integrity:** Can someone reproduce the result or inspect its receipts and hashes?
+4. **Continuity:** What changed over time, and what was missing or violated?
+5. **Claim:** What does the result actually prove—and what must stay unsupported?
 
-This work started from a simple question: what if systems had to prove what they did instead of asking you to trust them?
+Razorglint Labs builds systems around **governance, evidence, verification, local-first operation, assurance, policy mapping and bounded AI workflows**. Each technology has its **own authority, source, maturity and license boundary**. Simply listing two components together never establishes integration, interoperability or production deployment.
 
-**Damian Ketting** · Founder, Razorglint Labs
+### Proof at a glance
 
-> **In this architecture, an action without proof is treated as if it never happened.**
+| Record | Observed/reported result | Limitation |
+| --- | --- | --- |
+| **Compliance Drift Detector — 16 Oct 2026** | **76 passing tests**, source-bound Windows/Linux CI; unsigned Windows x64 **v0.2 controlled-evaluation preview** owner-accepted | [Exact release record](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/docs/RELEASE_STATUS.md); not enterprise GA, independently audited or digitally publisher-signed |
+| **Historical portfolio audit — 26 Apr 2026** | **3,505 executed passing tests** across 10 audited rows | Some environmental failures/skips; not rerun as one suite, not October and not externally certified |
+| **Prestige-Reforged — Oct 2026** | Private staged source/phase qualification; verification, history, claims and handoff work | Windows search, UX and installer/customer acceptance remain in review; legacy Prestige-Forge counts are not current Reforged counts |
+| **Viventia + VEAC** | Private scoped evidence cockpit and separate adversarial-assurance development | No current global SAFE certificate, production SIEM/EDR equivalent or service-scale guarantee |
+| **Governed AI Control & Assurance Stack** | Candidate integration architecture and Phase 0 source/IP admission process | Not a completed, joined six-component buyer release |
 
----
+**Do not add April and October results into a new grand total.** They use different dates, test populations, source states, environments and product identities.
 
-## Proof at a Glance
-
-These are not targets. These are **live test results from shipped code**.
-
-| Metric | Count | Source |
-|--------|-------|--------|
-| Independent systems | **15** | This repository |
-| Verified tests (Python + Rust) | **3,505** | Aggregate across all system test suites (2026-04-26) |
-| OpenClaw governed agent tests | **1,578** passed, 156 skipped | 45 test modules, dual-write + policy + trust + truthpack |
-| Prestige-Forge proof engine tests | **690** core | 15 constitutional families, 19 core modules |
-| SAR governance tests | **497** Python + **13** Rust verification | 86 inventoried endpoints, fail-closed |
-| EU AI Act evidence compiler tests | **194** (147 excluding env-sensitive chain replay) | 6 EU AI Act articles, 43 source files |
-| Rust infrastructure crate tests | **132** across 6 crates | ironcache, ironledger, ironvec, irontext, pf_verify, sar_verify |
-| FleetSim fleet governance tests | **103** | Trust plane, severity ladder, transition receipts |
-| Command Guardian enforcement tests | **131** | Hardened prototype; 35 adversarial bypass tests + DENY receipt sanitization |
-| Voidlock execution cage modules | **8** core + CLI | stdlib-only, deny-by-default |
-| Blackiron cryptographic modules | **5** (hash, chain, merkle, clock, receipt) | Rust, domain-separated, deterministic |
-
-Every number above can be reproduced by running `pytest` or `cargo test` in the corresponding repository. No marketing math.
+[Historical audit](assets/proof/PROOF_AUDIT_2026-04-26.md) · [Proof manifest](assets/proof/PROOF_MANIFEST.md) · [Current evidence register](PUBLIC_EVIDENCE_REGISTER_2026-10-16.md).
 
 ---
 
-## Verify It Yourself (2 minutes)
+## Reference architecture
 
-```bash
-git clone https://github.com/RazorglintLabs/<REPO>
-cd <REPO>
-pytest -q
-# or
-cargo test
+**Conceptual responsibilities—not proof that all these components are already connected.**
+
+```text
+                      HUMAN / EXPLICIT AUTHORITY
+                                 |
+                    permitted purpose + scope
+                                 v
+                   +----------------------------+
+                   | POLICY / GOVERNANCE        |
+                   | SAR · policy engines       |
+                   | allow / deny / unresolved  |
+                   +----------------------------+
+                                 |
+                      covered permitted operation
+                                 v
+                   +----------------------------+
+                   | EXECUTION / OBSERVATION    |
+                   | tools · agent mechanisms   |
+                   | fleet simulation · apps    |
+                   +----------------------------+
+                                 |
+                        scoped records / events
+                                 v
+                   +----------------------------+
+                   | EVIDENCE / PROVENANCE      |
+                   | hashes · receipts · time   |
+                   | custody and lineage        |
+                   +----------------------------+
+                                 |
+                                 v
+                   +----------------------------+
+                   | EVALUATION / VERIFICATION  |
+                   | Prestige-Reforged · CDD    |
+                   | bounded findings + gaps    |
+                   +----------------------------+
+                                 |
+                      separate adversarial challenge
+                                 v
+                   +----------------------------+
+                   | EXTERNAL EXAMINER / HUMAN  |
+                   | VEAC · buyer · operator    |
+                   | accepts / challenges claim |
+                   +----------------------------+
 ```
 
-Expected:
-- 3,400+ tests passing
-- Fail-closed behavior on invalid policy
-- Receipt chain verification OK
+**Authority flows from an explicit owner or policy boundary. Evidence flows out from the covered operation.** A verifier is not an authority issuer. A product cannot certify itself. A digest is not source authenticity, a history trace is not completeness, and a simulated fleet is not a fielded fleet.
 
-No complex setup required beyond Python 3.11+ or Rust 2021.
+### Architecture layers
 
----
+| Layer | Job | Examples |
+| --- | --- | --- |
+| **Authority & governance** | Determine permissions and named policy verdicts | SAR, PolicySourceEngine, VerdictGate |
+| **Bounded operation** | Carry out or simulate explicitly covered actions | OpenClaw, Voidlock, Command Guardian, FleetSim |
+| **Integrity & history** | Preserve inspectable receipts, chronology and chains where implemented | Blackiron, ProofChain, SealVault, Phantom Ledger |
+| **Evidence evaluation** | Bind checks, gaps, history, recovery and claims to declared input | Prestige-Reforged, CDD, Trust Continuity Mapper |
+| **Operator presentation** | Make scoped records understandable without inventing authority | Viventia, CTLM/LocalChad, Decision Provenance Tracker |
+| **Independent challenge** | Probe assertions with separate tests, hostile cases and scope | VEAC, product/receiver qualification gates |
 
-## What Most Systems Claim vs What This Architecture Proves
-
-```
-COMMON CLAIM                           RAZORGLINT EVIDENCE POSTURE
-
-"We log everything"                    Receipts are generated, chained, and checked where the proof surface covers it.
-
-"AI-powered decisions"                 AI output is not authority. Governance gates the action.
-
-"Role-based access control"            Covered actions start denied and require explicit allowance.
-
-"Audit trail included"                 Evidence can be exported, inspected, and verified.
-
-"Compliant with regulations"           We map evidence and name gaps. We do not claim certification by default.
-
-"We take security seriously"           Covered invalid states fail closed instead of quietly continuing.
-```
+[Detailed authority walls and GCA candidate integration](docs/ARCHITECTURE_LAYERS_2026-10-16.md).
 
 ---
 
-## Start Here
+## Fifteen selected systems
 
-If you're new to this architecture, begin with:
+These are **15 editorially selected profiles for the October architecture**, not a statement that exactly 15 products are available, independently deployed or currently tested. The historical April “15 systems” inventory must not be confused with this updated cross-section.
 
-- **SAR** → governance (enforces rules, fail-closed)
-- **Prestige-Forge** → proof engine (verifies claims with evidence)
-- **Voidlock** → execution cage (runs untrusted code safely)
+| # | System | Main capability | Current evidence boundary |
+| ---: | --- | --- | --- |
+| 01 | **Prestige-Reforged** | Evidence and source admission, claims, history/drift, proof handoff | Private staged qualification; customer Windows product work not accepted as final |
+| 02 | **SAR** | Policy authority, fail-closed governance and receipts | Historical tests, private source; not a universal integration claim |
+| 03 | **Viventia** | Scoped customer / incident-response evidence cockpit | Private V1 work; not SIEM, EDR or hosted multi-tenancy |
+| 04 | **VEAC** | Independent adversarial target challenge | Campaign-scoped results; no general certification |
+| 05 | **[Compliance Drift Detector](https://github.com/RazorglintLabs/ComplianceDriftDetector)** | Structured policy/evidence checkpoint drift | **Current Oct 16 CI; unsigned Windows preview** |
+| 06 | **OpenClaw** | Governed agent/action mechanism | Historical 1,578 passes; source/IP admission still required |
+| 07 | **Voidlock** | Deny-first capabilities and monotonic execution budgets | Historical/local; not a certified OS sandbox |
+| 08 | **Blackiron** | Rust integrity, Merkle, clock and receipt primitives | Historical/local 53-test record |
+| 09 | **ProofChain** | Hash-linked append-only history, accumulators | Historical/local; current source/transfer audit needed |
+| 10 | **SealVault** | Evidence sealing, Merkle inclusion and optional signatures | Historical/local; validate supported routes and ownership |
+| 11 | **Command Guardian** | Terminal safety policy and audit chain | 131 historical passes; prototype, not signed receipts or SAR-linked |
+| 12 | **FleetSim** | Simulation-grade fleet-node trust transitions | 103 historical passes; no field safety proof |
+| 13 | **EU AI Act Evidence Readiness Sprint** | Read-only evidence mapping for six articles | Historical scoped tests; no legal/regulatory compliance verdict |
+| 14 | **ReasonForge** | LLM data quality, leakage and evaluation patterns | Separate source/product documentation, current proof per repo |
+| 15 | **CalledIt** | Sealed predictions, React PWA and native app wrappers | Private product source; no verified revenue/usage claims here |
 
-Everything else extends or supports these three systems.
+Read [full system profiles](docs/SYSTEM_PROFILES_2026-10-16.md) for mechanics, source boundaries, maturity and non-claims.
 
----
-
-## System Inventory
-
-Every system below is **sovereign** — independently deployable, independently testable, independently sellable. No shared runtime. No shared core. Integration happens through schemas and file contracts, never through imported internals.
-
----
-
-### SAR — Safety Automation Readiness
-
-**Runtime governance that doesn't ask permission — it enforces.**
-
-```
-Command In ──► Policy Gate ──► Ed25519 Signed Receipt ──► Append-Only Chain
-                  │                                            │
-             DENY if invalid                          Tamper breaks chain
-             No override exists                       Detectable by any verifier
-```
-
-- 170 Python tests. 100 Rust tests. 21 cross-verification tests across 5 tamper classes and 390 records.
-- 86 inventoried endpoints across 3 services.
-- 10 approved claims — each backed by test evidence. 29-claim universe tracked. Forbidden claims documented and enforced.
-- Drone fleet governance demo: **29/29 PASS** — 3 drone units, 1 fleet, 1 project, real policy enforcement.
-
-SAR is intentionally non-AI. Deterministic. Predictable. The system that approves the operation is **never** the system that runs the operation.
+**Additional technology and project families** include CTLM/LocalChad, ChessClock, Isengard, VerdictGate, PolicySourceEngine, Phantom Ledger, Trust Continuity Mapper, Decision Provenance Tracker, ForgeCell, Rust Modules, Truthpacks, BountyPipeline and the Developer Supply-Chain Exposure Proof Kit. **GCA Stack** is an integration/acquisition-package candidate, not a sixteenth ready-made product. The larger estate is intentionally not restricted to fifteen names.
 
 ---
 
-### Prestige-Forge — Proof Verification Engine
+## Selected systems: what the engineering does
 
-**Turns intent into cryptographic proof. Not assertions — SHA-256 verified artifacts.**
+### Prestige-Reforged — Evidence, evaluation and claim validity
 
-- 690 core tests. 15 constitutional families. 19 core modules. All families closed.
-- Client Zero proof: **25/25 PASS, 15/15 SAFE TO SAY** — real verification against real claims.
-- Claims Safety Engine: every marketing statement validated against evidence before it can be published. Unsafe claim = blocked.
-- Proof workflow: vault → receipt lineage → run engine → gate execution → evidence → proof mint → manifest → bundle. Each step produces verifiable output or the chain stops.
-- stdlib-only Python. No frameworks in the proof path. Reproducible on any machine with Python 3.11+.
+**What problem:** Teams need to know whether a claim still corresponds to exact evidence and a reproducible source state rather than a stale screenshot or a vague “PASS.”
 
----
+**Engineering trajectory:** staged Python local-first core; explicit source identity and grant boundaries; evidence custody; verification profile; immutable Claims/Evaluations; structured WHY; historical drift; proof handoff and claim-preflight. Separate human-first UI work aims to make those concepts usable without erasing unknown states.
 
-### Voidlock — Zero-Trust Execution Cage
+**2026 status:** Source and phase qualifications exist privately, but current Windows search and installer work still has unresolved UI/integration gates. **April Prestige-Forge 690-core/73-UI figures belong to the legacy code line, not automatically to Reforged.** [Detailed profile](docs/SYSTEM_PROFILES_2026-10-16.md#01--prestige-reforged).
 
-**Untrusted code runs inside a cryptographically governed void. It cannot escalate. It cannot escape. It cannot lie about what happened.**
+### SAR — External policy authority
 
-```
-Capability (deny-by-default) → Budget (monotonic ↓) → Chain (append-only)
-         └─────────────── Void (sealed cage) ──────────────┘
-                              ↓ collapse
-                        VoidReceipt (SHA-256, self-verifying)
-                              ↓
-                        VoidJudge (stateless)
-                              ↓
-                        PASS | FAIL | BREACH | PANIC | VOID | TIMEOUT
-```
+**What problem:** A system that acts should not simply authorize itself because an AI model recommended a step.
 
-- 8 core modules. stdlib-only Python. No external dependencies in the execution path.
-- Budgets only decrease. Capabilities only attenuate. Collapsed voids never reopen.
-- The judge is stateless. Same inputs, same verdict. Every time.
+**Mechanisms:** explicit governance boundaries, deterministic policy enforcement, documented signed/linked receipts in covered implementations, protected mutation and a separation between policy authority and the executor. Historical April source tests reported **497 Python passes plus 3 environment failures**. **Do not infer SAR integration** with every named executor or call it a deployed enterprise control plane.
 
----
+### Viventia — Scoped operational evidence
 
-### Blackiron — Cryptographic Primitives
+**What problem:** Investigators and customers need a comprehensible, scoped evidence trail without mixing customer identities or inventing incident authorization.
 
-**Hash chains, Merkle trees, hybrid logical clocks, tamper-evident receipts. Rust. Minimal dependencies. Deterministic.**
+**Mechanisms:** local-first evidence identity; explicit customer/deployment scoping; intended Customer and IR/MSSP cockpit projections; repeatable isolated profile qualification. Current private V1 product work remains bounded. **No agents in V1.0, no SIEM/EDR claim, no unrestricted live alerting or production SaaS scale implied.**
 
-- 5 core modules. 4 crate dependencies (sha2, hex, serde, serde_json). Nothing else.
-- Domain-separated Merkle prefixes prevent second-preimage attacks.
-- Stable preimage formats documented for cross-language verification.
-- Same inputs = same outputs. Always.
+### VEAC — The examiner is not the product
 
----
+**What problem:** A product's happy-path tests are insufficient to establish all security-relevant behaviors.
 
-### Rust Modules — Infrastructure Crates
+**Mechanisms:** independent repository and authority; retained hostile scars; campaign-scoped rules/probes; target identity and known-bad fixtures. Results such as RED, INSUFFICIENT, WATCH and CLEAR have defined examination scopes. **CLEAR is not a safety certificate.**
 
-**Purpose-built Rust crates for governed systems.**
+### Compliance Drift Detector — A current public technical preview
 
-- **ironcache** — deterministic caching with eviction control (30 tests)
-- **ironledger** — append-only ledger primitives (19 tests)
-- **ironvec** — vector operations for embedding pipelines (24 tests)
-- **irontext** — text processing for structured extraction (14 tests)
+**What problem:** A structured policy can look healthy now while the supplied evidence history shows an earlier failure.
 
-132 tests across 6 crates. All passing. All stdlib + minimal deps.
+**Mechanisms:** accepts **operator-supplied structured** policy claims and **operator-preclassified dated observations**; computes ALIGNED, DRIFTING, VIOLATED and UNDECLARED; exposes recovered history, missing mappings, separate unmatched behavior findings, JSON/HTML/Markdown reports and v2 JSON consistency verification.
 
----
+**Current result:** [76 regression tests passed](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/docs/RELEASE_STATUS.md) in the 16 Oct Windows/Linux Python 3.11/3.12 qualification. Owner accepted **unsigned Windows x64 v0.2 controlled evaluation** at qualified source commit `662f84caa2ed372abde6a83245c58b466e52ce94`.
 
-### EU AI Act Evidence Readiness Sprint
+**Not claimed:** freeform log/PDF analysis, continuous monitoring, authenticated source truth, digitally signed publisher identity, enterprise distribution, certification or automatic legal compliance.
 
-**Read-only evidence compiler mapped to EU AI Act Articles 9, 11, 12, 13, 14, 15.**
+### OpenClaw & Voidlock — Governed action and bounded execution
 
-- 43 source files. 8 adapters. 194 tests (147 excluding env-sensitive SAR chain replay).
-- Consumes sealed outputs from Prestige-Forge, SAR, ReasonForge, PolicySourceEngine, and ChessClock through read-only adapters.
-- Produces article-mapped evidence packs, gap registers, and compliance readiness reports.
-- **Never writes back** into any source system. Data flows one direction: sovereign → adapter → report → customer.
-- Does not say "compliant." Says "here is the evidence, here are the gaps, here is the mapping." The auditor decides.
+**OpenClaw** historically demonstrated dual-write/denial/truthpack agent test families (**1,578 passes, 156 skips** in April). **Voidlock** historically demonstrated deny-by-default capability attenuation, monotonic budgets and bounded judge behavior (**54 passes**). Both need current source/IP and adversarial requalification before integration admission. A diagram does not prove all agent actions are governed or that a sandbox cannot be escaped.
 
----
+### Blackiron, ProofChain & SealVault — Integrity primitives, not magical truth
 
-### CTLM — Controlled Thinking Layer Model
+**Blackiron:** hash-chain, domain-separated Merkle, clock and receipt concepts in Rust; **53 historical passes**.  
+**ProofChain:** hash-linked append-only history, query/export and accumulator design in local source.  
+**SealVault:** local hash modes, batch inclusion, optional signatures and offline verification in historical source.
 
-**AI reasoning that knows its place.**
+These are **distinct technology assets**, not a merged “tamper-proof ledger.” Integrity checks detect covered alterations; they do not validate source authenticity without separate mechanisms.
 
-- Multi-phase structured reasoning: warm-up → main → verification → diagnostics.
-- Vector-based semantic retrieval over embedded knowledge (384-dimensional space, FAISS-backed).
-- The AI layer generates recommendations. It never executes. Governance and execution are separate systems with separate authority chains.
-- Every reasoning step logged. Every decision auditable. No freeform generation reaches production without structured validation.
+### Command Guardian — A seatbelt for the terminal
+
+**Mechanisms:** deny-first CLI command classification, risky-action authorization, SHA-256 chain receipts, sanitized denied-command storage and bounded adversarial regression tests. **131/131 historical passing tests** after hardening. **Not production-ready; not SAR-integrated; receipt signing is deferred.** Existing MIT rights must be considered in any sale/exclusivity analysis.
+
+### FleetSim — Trust-plane simulation
+
+**Mechanisms:** heartbeat/distress transitions, severity ladder, reflex/transition records and degraded-state logic. The April audit reported **103 passes**. This is **simulation-grade engineering**, not proof about physical vehicles, aircraft or certified safety.
+
+### EU AI Act Evidence Readiness Sprint — Gaps, not legal verdicts
+
+**Mechanisms:** read-only adapters, article-to-evidence mapping, gap registers, oversight and reporting for six selected articles (9, 11, 12, 13, 14, 15). April reported **194 passes with six environment-sensitive caveats**. It does **not** certify compliance with the Act or replace legal/conformity assessment.
+
+### ReasonForge — LLM dataset integrity workflows
+
+**Mechanisms:** structured schema validation, duplication and potential leakage detection, evaluation pipelines and reporting designed to reduce avoidable dataset issues. Current standalone release and buyer-readiness depend on its own source and test state; no guaranteed downstream model quality is claimed.
+
+### CalledIt — Prediction sealing and app delivery
+
+**Mechanisms:** FastAPI + SQLite, AES-256-GCM sealed records, anonymous device-auth design, React/TypeScript PWA, Android Capacitor and Windows Tauri wrappers. Source and test maturity must be evaluated against an exact release. There is no verified customer traction or externally proven anti-cheating guarantee in this public architecture audit.
 
 ---
 
-### OpenClaw — Governed Autonomous Agents
+## Design law — specified boundary, not universal guarantee
 
-**Autonomous agent team running under SAR enforcement. Every agent action receipted. Every output exportable as a Truthpack.**
-
-- 1,578 tests passing. 45 test modules covering dual-write, policy, trust, denial, truthpack, red-team, and reconciliation.
-- Dual-write receipt chain model — agents produce evidence, SAR enforces policy.
-- Three-lane architecture: upstream (read-only, pinned), agent stack (Razorglint wrapper), docs (frozen).
-- No agent defines its own rules. No agent bypasses governance. No output without a receipt.
-
----
-
-### Truthpack Growth Engine
-
-**Proof-gated content distribution. No evidence, no publish.**
-
-- 9 bounded agents with single-owner task routing. No agent overlap. No shared state.
-- Every claim linked to a specific SHA-256 proof artifact. Stale evidence (>24h) blocks all downstream output.
-- Human approval gate mandatory. No automated publishing without operator sign-off.
+| Principle | What it means in covered implementations | What it does not mean |
+| --- | --- | --- |
+| **Authority separated from execution** | A policy evaluator governs the defined operation instead of accepting arbitrary AI output as permission | Every portfolio app is already SAR-integrated |
+| **Deny-first where implemented** | Invalid/unsupported policy states cause a defined refusal | No adversary can ever bypass any component |
+| **Determinism** | Repeatable evaluation of specific inputs/contracts | Every AI output or real-world event is deterministic |
+| **Receipts / integrity** | Hashes, chains and digital signatures in the systems that actually implement them | All receipts everywhere are signed or input assertions true |
+| **Independent challenge** | Examiner uses its own propositions/hostile fixtures and exact target identity | Examiner certifies overall product security |
+| **Local-first operation** | Operator-controlled data and offline paths wherever qualified | No external API, dependency, model download or network interaction exists anywhere |
+| **No silent component admission** | Source, licensing, tests, ownership and integration contracts must be reviewed | Shared interfaces or joined product already exist |
+| **Non-claims are mandatory** | Scope, missing inputs, weaknesses and uncertainty remain visible | Passing internal tests is an external audit |
 
 ---
 
-### CalledIt — Verifiable Prediction Sealing
+## Technology stack — selected surfaces
 
-**Lock a prediction with AES-256-GCM at creation time. Reveal on schedule. Prove you didn't cheat.**
-
-- Per-seal random keys. Encrypted at rest. Decrypted on schedule.
-- Anonymous verification — no identity required to prove prediction accuracy.
-- Cross-platform: PWA + native wrappers (Android/Capacitor, Windows/Tauri).
-
----
-
-### Command Guardian
-
-**Hardened local-first command enforcement prototype. Blocks risky terminal commands, emits hash-chained audit receipts, and sanitizes denied command evidence safely.**
-
-- Current audit: **131/131 tests passing** after emergency security remediation.
-- Critical bypass classes closed with adversarial tests.
-- DENY receipts store command hashes instead of raw dangerous command strings.
-- Token issuance is now audit-receipted.
-- Version corrected to **0.2.0**; current status: **hardened prototype**. Earlier `v1.0.0` release marked superseded.
-- Not production-ready, not certified, not SAR-integrated, and receipt signing remains deferred.
+| Layer | Representative technology | Qualifier |
+| --- | --- | --- |
+| Languages | Python 3.11+, Rust 2021, TypeScript, PowerShell/Bash | Varies by project |
+| APIs and apps | FastAPI, React, Electron, WPF/.NET design, Tkinter, Capacitor, Tauri | Different codebases and stages |
+| Cryptographic mechanisms | SHA-256, hash chains, Merkle proofs, Ed25519 and AES-256-GCM | Not implemented uniformly; different trust properties |
+| Evidence and storage | File-backed bundles, SQLite, JSON/JSONL and receipts | Scope and retention by product |
+| AI/data workflows | Structured evaluation, vector retrieval and data-quality checks | Some depend on optional external services/models |
+| Qualification | pytest, unittest, cargo test, Windows/Linux GitHub Actions and hostile fixtures | Test results only valid for recorded commits/environments |
 
 ---
 
-### FleetSim — Fleet Trust Plane
+## Historical passing test audit — 26 April 2026
 
-**Heartbeat and distress-pulse mechanism for fleet-scale governance.**
+The source [PROOF_AUDIT_2026-04-26.md](assets/proof/PROOF_AUDIT_2026-04-26.md) recorded these **passing executions**, and explicitly noted environment failures/skips. Do not silently treat this as a current all-systems qualification:
 
-- 103 tests passing. Trust plane enforcement, severity ladder, transition receipts, outage handling.
-- Fleet Reflex Loop: routine heartbeat → distress pulse → reflex receipt.
-- Calibration framework with coefficient-of-variation analysis and provisional candidate detection.
+| Historical suite | Passes | Recorded limits |
+| --- | ---: | --- |
+| OpenClaw | 1,578 | 156 skipped |
+| Legacy Prestige-Forge core | 690 | Not current Prestige-Reforged |
+| SAR Python | 497 | 3 env-gated failures |
+| EU AI Act Sprint | 194 | 6 environment-drift issues |
+| Rust Modules (6 crates) | 132 | 24 env-skips |
+| Command Guardian | 131 | Hardened prototype; no receipt signing |
+| FleetSim | 103 | Simulation only |
+| Legacy Prestige-Forge UI | 73 | 2 module-missing tests |
+| Voidlock | 54 | Historical local run |
+| Blackiron | 53 | Historical local run |
+| **Historical recorded sum** | **3,505** | **Not an independently certified or October-comparable total** |
 
----
+### Historical proof gallery (preserved unchanged)
 
-## Architecture
+<details>
+<summary>Expand the original April 2026 screenshots</summary>
 
-Authority flows down. Evidence flows up. **No system defines its own rules.**
+![Historical aggregate proof](assets/proof/proof_aggregate_summary.jpg)
+![Historical OpenClaw proof](assets/proof/proof_openclaw_test_1578_pass.jpg)
+![Historical SAR proof](assets/proof/proof_sar_test_497_pass.jpg)
+![Historical legacy Prestige-Forge proof](assets/proof/proof_pf_test_690_pass.jpg)
+![Historical Command Guardian proof](assets/proof/proof_command_guardian_131_pass_hardened.jpg)
+![Historical EU AI Act proof](assets/proof/proof_euai_test_194_full.jpg)
+![Historical Rust Modules proof](assets/proof/proof_rust_modules_test_132_pass.jpg)
+![Historical FleetSim proof](assets/proof/proof_fleetsim_test_103_pass.jpg)
+![Historical Voidlock proof](assets/proof/proof_voidlock_test_54_pass.jpg)
+![Historical Blackiron proof](assets/proof/proof_blackiron_test_53_pass.jpg)
+</details>
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│  OPERATOR                                                        │
-│  Cockpits · CLI · Approval Gates · Human Override                │
-├──────────────────────────────────────────────────────────────────┤
-│  GOVERNANCE                          SAR Policy Enforcement      │
-│  Ed25519 signed doctrine ──► Fail-closed gate ──► Receipt chain  │
-├──────────────────────────────────────────────────────────────────┤
-│  VERIFICATION                        Cryptographic Proof Layer   │
-│  Prestige-Forge · Blackiron · Voidlock · Hash Chains · Merkle   │
-├──────────────────────────────────────────────────────────────────┤
-│  EXECUTION                           Governed Runtime            │
-│  OpenClaw Agents · Truthpack · CalledIt · FleetSim              │
-├──────────────────────────────────────────────────────────────────┤
-│  REASONING                           Controlled AI               │
-│  CTLM · ReasonForge · Structured Retrieval                       │
-├──────────────────────────────────────────────────────────────────┤
-│  COMPLIANCE                          Evidence Compilation         │
-│  EU AI Act Sprint · Article Mapping · Gap Register               │
-└──────────────────────────────────────────────────────────────────┘
-```
-
-Integration between systems happens through **schemas, file contracts, and sealed outputs** — never through shared runtimes or imported internals. Every sovereign asset remains independently operable, licensable, and sellable.
-
----
-
-## Design Law
-
-These are not aspirations. These are **enforced constraints** with hard-stop triggers.
-
-| Principle | Enforcement |
-|-----------|-------------|
-| **Separation of authority** | The system that runs the operation never approves the operation. Governance and execution are architecturally separated. |
-| **Fail-closed** | Invalid policy, stale proof, broken chain = hard stop. Not a warning. Not a retry. A stop. |
-| **Deterministic control** | Same inputs produce same outputs. No probabilistic safety. Operators can predict behavior. |
-| **Local-first** | No cloud dependency at runtime. No external infrastructure for core functions. Operator owns the data. |
-| **Deny-by-default** | No capability granted unless explicitly authorized. Attenuation only — children never get more than parents. |
-| **No shared core** | No `common/`, no `shared_engine/`, no central runtime across systems. Sovereign boundaries are architectural, not organizational. |
-| **Append-only records** | Hash-chained. Signed. Tampering is detectable by any independent verifier. |
+The [historical proof manifest](assets/proof/PROOF_MANIFEST.md) records what selected screenshots establish and what they **do not** establish. Screenshots alone do not offer current code execution, independent attestation or cryptographic customer assurance.
 
 ---
 
-## Stack
+## Verify a current public system
 
-| Layer | Technology |
-|-------|-----------|
-| **Languages** | Python 3.11+, Rust 2021, TypeScript, PowerShell |
-| **Frameworks** | FastAPI (API surfaces), Flask/Jinja (local UI), React, Electron |
-| **Cryptography** | SHA-256 hash chains, Ed25519 digital signatures, AES-256-GCM sealed payloads |
-| **Storage** | SQLite, append-only JSONL ledgers, file-based sealed bundles |
-| **AI / Retrieval** | FAISS, sentence-transformers (384-dim), structured multi-phase reasoning |
-| **Infrastructure** | Docker, local-first by default, no mandatory cloud services |
+There is no legitimate one-command procedure to clone fifteen **private** systems and reproduce a historical multi-repo sum.
 
----
+For an actually public code path, start with [Compliance Drift Detector](https://github.com/RazorglintLabs/ComplianceDriftDetector):
 
-## For Buyers and Decision-Makers
+1. Identify source commit `662f84caa2ed372abde6a83245c58b466e52ce94` and consult the [release-status receipt](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/docs/RELEASE_STATUS.md).
+2. Inspect the [documented self-service quickstart](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/SELF_SERVICE_QUICKSTART.md) and current license/claim boundaries.
+3. Check [Windows build Actions 38893213993](https://github.com/RazorglintLabs/ComplianceDriftDetector/actions/runs/38893213993) and [cross-platform test Actions 38893214199](https://github.com/RazorglintLabs/ComplianceDriftDetector/actions/runs/38893214199) against that **same** commit.
+4. Reproduce supported example/verification commands in a matching environment. Record PASS, FAIL, SKIP and any changed source identity.
+5. Treat the unsigned Windows preview as **controlled evaluation only**, and separate report hash consistency from signatures or source authenticity.
 
-**What you get:** Systems that produce cryptographic evidence of their own behavior — not compliance theater, not checkbox security, not "trust us" documentation.
-
-**What that means:**
-- Your automation can prove what it did, when, and under what authority.
-- Your AI systems reason inside governed boundaries — they recommend, they don't execute.
-- Your regulatory evidence is compiled from sealed artifacts — article-mapped, gap-identified, auditor-ready.
-- Your operational logs are tamper-evident. Alteration is mathematically detectable.
-
-**What it doesn't mean:**
-- This is not "AI compliance in a box." It maps evidence to articles and tells you where the gaps are.
-- This is not a SaaS platform. It runs on your infrastructure, under your control.
-- This does not say "certified" or "compliant." It says "here is the proof — you decide."
+[Complete reproducibility / claim-checking playbook](docs/VERIFICATION_PLAYBOOK.md).
 
 ---
 
-## Proof Snapshots
+## Commercial, integration and IP boundaries
 
-Live test output captured under real conditions. Not mockups.
+- **Prestige-Reforged core IP is retained** by Razorglint. A separately negotiated bounded license, OEM use or adapter is not a transfer of core ownership.
+- **CDD**, Viventia, SAR/automation technology and other assets each have their own evaluation, product, ownership and dependency boundaries; a public repository is not a blanket redistribution license.
+- The **Governed AI Control & Assurance Stack** is a proposed coherent strategic package under **Phase 0 admission**, not a finished integrated runtime; independent VEAC authority must remain distinct.
+- The April source audit is **not evidence of market valuation, revenue, customers, certified security, clean transfer rights or current product quality**.
+- Buyer diligence requires exact source identities, dependency and IP inventories, reproducible tests, claim/non-claim sheets, transfer scope and bounded support terms.
 
-![Aggregate Summary](./assets/proof/proof_aggregate_summary.jpg)
-![OpenClaw 1578 Tests](./assets/proof/proof_openclaw_test_1578_pass.jpg)
-![SAR 497 Tests](./assets/proof/proof_sar_test_497_pass.jpg)
-![FleetSim 103 Tests](./assets/proof/proof_fleetsim_test_103_pass.jpg)
-![Prestige-Forge 690 Tests](./assets/proof/proof_pf_test_690_pass.jpg)
-![EU AI Act 194 Tests](./assets/proof/proof_euai_test_194_full.jpg)
-![Rust Modules 132 Tests](./assets/proof/proof_rust_modules_test_132_pass.jpg)
-![Voidlock 54 Tests](./assets/proof/proof_voidlock_test_54_pass.jpg)
-![Blackiron 53 Tests](./assets/proof/proof_blackiron_test_53_pass.jpg)
-![Command Guardian Hardened Prototype](./assets/proof/proof_command_guardian_131_pass_hardened.jpg)
+[Product and IP boundaries](docs/IP_AND_DELIVERY_BOUNDARIES.md) · [Pain-to-Proof business problem guide](https://github.com/RazorglintLabs/razorglint-pain-to-proof-map).
 
 ---
 
-## About
+## About Razorglint Labs
 
-**Razorglint Labs** builds governance infrastructure and verification systems for organizations that need their automation to **prove its behavior**, not just assert it.
+**Razorglint Labs / TCOG Collective LLC** develops evidence-first engineering tools, governance boundaries, human-facing product surfaces and inspectable automation.
 
-Independent systems engineering. Cryptographic evidence. Operator authority preserved.
+**Damian G. L. Ketting** — Founder / systems builder  
+**Contact:** [razorglint.ops@protonmail.com](mailto:razorglint.ops@protonmail.com)  
+**Portfolio:** [Damian Ketting — Systems](https://github.com/RazorglintLabs/damian-ketting-ai-systems-portfolio)
 
-**Damian Ketting** — Founder  
-**Contact:** razorglint.ops@protonmail.com  
-**GitHub:** [@RazorglintLabs](https://github.com/RazorglintLabs)
-
----
-
-<p align="center"><sub>Razorglint Labs — TCOG Collective LLC · All rights reserved</sub></p>
+<p align="center"><sub>© 2026 Razorglint Labs / TCOG Collective LLC · Individual repository licenses and negotiated agreements govern use.</sub></p>
