@@ -1,36 +1,38 @@
-# Verification Playbook — Source, Tests and Claims
+# Source-Bound Verification Playbook
 
-This repository is an **architecture/evidence index**, not a universal executable test harness.
+**Updated 16 October 2026.** This repository is an architecture and evidence index. A reader should be able to trace each numeric claim to a defined source, environment, test command and evidence receipt—not merely to a screenshot.
 
-## Source-bound verification checklist
+## Acceptance rule
 
-1. Record the **canonical repository and immutable commit** (and tree/build/artifact SHA-256 where applicable).
-2. Check license, dependency and scope boundaries *before* attempting the workflow.
-3. Identify exactly one testable proposition with defined platform, command, fixtures and expected results.
-4. Run the source repository's **own** documented command, not generic `pytest` against a different tree.
-5. Record **passed, failed, errored, skipped, environment N/A**, and artifacts.
-6. Verify receipts/JSON with the verifier for that **specific version**; do not conflate consistency, provenance and signatures.
-7. Write an explicit **WHAT THIS DOES NOT PROVE** section.
-8. Before a public claim, obtain a separate exact-source review. Historical “approved” language does not automatically authorize new claims.
+For each claimed passing suite, record the following as one immutable row:
 
-## Current demonstrable public route
+| Field | Required |
+| --- | --- |
+| System | Product or named component; never a vague shared-portfolio label |
+| Source identity | Repository, branch **and full commit SHA**, with an exact tree/build SHA when material |
+| Test population | Command, test directory/families and whether subset, full suite or target-specific check |
+| Environment | Operating system, runtime version and important dependencies |
+| Execution proof | GitHub Actions run/job or retained exact-head locally executed log, dated |
+| Outcome | Passes, failures, errors, skips, warnings, known N/A |
+| Scope | Which proposition passed, and what **does not** follow |
+| Status | Current source CI / exact branch CI / local retained qualification / smoke only / evidence absent |
 
-[Compliance Drift Detector](https://github.com/RazorglintLabs/ComplianceDriftDetector) was accepted as an unsigned Windows x64 v0.2 **controlled evaluation preview** on 16 October 2026, with source `662f84caa2ed372abde6a83245c58b466e52ce94`. The [cross-platform test workflow 38893214199](https://github.com/RazorglintLabs/ComplianceDriftDetector/actions/runs/38893214199) and [native Windows build 38893213993](https://github.com/RazorglintLabs/ComplianceDriftDetector/actions/runs/38893213993) both report **completed/success on that exact SHA**. The [product release record](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/docs/RELEASE_STATUS.md) reports **76 passes** and includes ZIP/EXE digests.
+## Never double-count
 
-Use the [published CLI quickstart](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/SELF_SERVICE_QUICKSTART.md) to reproduce supported source workflows. The currently tagged older v0.1.x GitHub release must **not** be represented as the accepted v0.2 native binary.
+1. Python 3.11 and 3.12 CI running the **same** suite are repetitions, not twice as many independent tests.
+2. Windows/Linux matrices do **not** increase unique test count unless each has truly distinct test cases, and the difference is documented.
+3. Re-running `tests/test_self_service.py` after `pytest -q` does not add unique cases when already part of the full suite. CDD's extra 24-case invocation is a subset of the **76**.
+4. Different frozen phase suites at the **same source SHA**, executed as disjoint paths, may be added when the test population is explicit: Prestige-Reforged Receiver reports **532 Phase 6 + 112 Phase 7 = 644**.
+5. A development-branch successful run does **not** qualify `main`. A local source-bound result is not independent GitHub CI. Different products may use unrelated suites, so a multi-repository sum is only a snapshot subtotal.
 
-This architecture document **checked metadata**, and did not independently rerun the suite or execute the Windows binary.
+## Current accessible evidence
 
-## Historical result policy
+See [current 15-system test ledger](CURRENT_TEST_EVIDENCE_2026-10-16.md), which records five countable test snapshots, CI/log provenance, **1,453 source-bound Viventia Python passes**, and all missing same-head results.
 
-[April 26, 2026 audit](../assets/proof/PROOF_AUDIT_2026-04-26.md): 3,505 reported passes across 10 distinct rows, some with environment failures/skips. The source includes legacy Prestige-Forge; those counts are not current Prestige-Reforged. Images remain historical rather than being mislabeled as current October proof.
+Two numerical examples:
+- [CDD latest qualifying workflow](https://github.com/RazorglintLabs/ComplianceDriftDetector/actions/runs/38898754185), exact main commit `70e4bb865e149e0321151ef57a6a3adee7cbfa2d`: 76 unique Python tests.
+- [Prestige-Reforged Receiver](https://github.com/RazorglintLabs/Prestige-Reforged/actions/runs/38883382477), exact candidate commit `fbeab53e9af27363a95c6eef151b8069c6df2842`: 532 + 112 disjoint tests.
 
-## Wording gate
+**No all-15 recent test total has been established.** Private repositories with no retrievable Actions runs require an owner-provided exact-head qualification receipt or an explicitly authorized CI execution. A successful test suite does not mean system security, commercial availability, source authenticity or regulatory compliance.
 
-- **Current linked CI:** identify exact SHA, run, environment, result and limits.
-- **Private staged tests:** quote only cleared exact-source receipts, no public reproduction promise.
-- **Historical test record:** preserve date, untested changes and failures/skips.
-- **Candidate integration:** call it planned/under admission, never complete.
-- **Certification:** do not claim one unless an actual independent certification exists.
-
-[Overview](../README.md).
+[Architecture overview](../README.md) · [Test evidence ledger](CURRENT_TEST_EVIDENCE_2026-10-16.md).
