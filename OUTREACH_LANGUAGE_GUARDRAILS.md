@@ -1,3 +1,5 @@
+> **ARCHIVAL CLAIM-SAFETY NOTE · 16 October 2026:** This file records a previous public-claim review, primarily from April 2026. It is **not** an automatic authorization to repeat these statements as current results. See [the current public evidence register](PUBLIC_EVIDENCE_REGISTER_2026-10-16.md) and the refreshed [README](README.md) for superseding date/commit/source boundaries. Historical test totals, “approved” verdicts and availability assumptions require a new exact-source review before reuse.
+
 # Outreach Language Guardrails — Razorglint Labs
 
 **Generated:** 2026-04-27  
