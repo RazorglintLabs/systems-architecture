@@ -1,100 +1,25 @@
-# Razorglint — 15 Detailed System Profiles
-**Review:** 16 October 2026 · [Back to architecture](../README.md)
+# Engineering System Profiles — Current Evidence View
 
-These are **selected** technology profiles. Selection is editorial, not a license, deployment inventory, certification, independently verified ownership report or current all-project test audit.
+**16 October 2026 · Editorial 15-system architecture catalog.** Source/test maturity may change independently; exact verification records live in [the current test audit](CURRENT_TEST_EVIDENCE_2026-10-16.md).
 
-## 01 — Prestige-Reforged
-- **Problem:** Evidence/claim separation, source identity, history and reproducibility.
-- **Design:** Python local-first evidence admission, exact anchors, explicit authority, custody, claim evaluation/WHY, historical drift and proof handoff. Human-first UI under active development.
-- **Category:** Private staged qualification. Windows desktop/search/installer acceptance remains gated. Historical Prestige-Forge 690/73 tests are not current Reforged tests.
-- **Non-claims:** Universal truth, production Windows release, cloud tenancy or independent security certification.
-- **Commercial boundary:** Core IP retained; integrations/rights separately licensed.
+| System | What it is for | Proof and maturity scope |
+| --- | --- | --- |
+| **Prestige-Reforged** | Offline-first exact source identity, evidence custody, claims evaluation, history and proof transfer | **644** at exact CI-reviewed private product branch: 532 Phase 6 + 112 Phase 7. UI/installer/customer candidate retains distinct unresolved gates. No automatic transfer of core IP. |
+| **SAR** | Explicit governance of covered operations under policy/receipt authority | Private source with tests. This review found **no recent Actions result** to report a current unique count. No blanket integration claim. |
+| **Viventia** | Customer/IR evidence cockpit, scoped continuity and responder-safe reporting | **1,453** source-bound Python tests in retained Sep 13 correction-branch receipt, with one skip/warning. Separate Go/Rust CI success at a different commit. No proof of latest product-`main` full retest. Not SIEM/EDR. |
+| **VEAC** | Independent adversarial exam of exact target behavior and claims | **66** Oct 14 branch CI tests, four platforms/configurations; no universal “safe” certificate. |
+| **Compliance Drift Detector** | Deterministic structured policy vs pre-classified evidence history | **76** Oct 16 current-main CI. Unsigned native Windows preview; no source-truth authentication or legal compliance verdict. |
+| **OpenClaw** | Governed agent/action workflow and auditable handoffs | Standalone current repo/qualification not located. Product integration, legal ownership, dependency and acceptance remain distinct. |
+| **Voidlock** | Controlled execution and attenuated capability budgets | Standalone current repo/qualification not located. No certified sandbox assertion. |
+| **Blackiron** | Rust Merkle, hash chain and evidence primitives | Rust repository accessible but no recent CI numerical test receipt found. |
+| **ProofChain** | Hash-linked history, accumulator and provenance mechanics | Current standalone source/qualification not established in accessible GitHub inventory. |
+| **SealVault** | Evidence sealing/proof flow, with Rust/Go/TypeScript surfaces | Repository present, no recent CI count. Verify cryptographic properties per exact implementation. |
+| **Command Guardian** | Deny-first terminal guardrails, receipts and authorized risky-action handling | Source/older CI exists, but no contemporary suite result found here. Not production-ready or SAR-integrated by implication. |
+| **FleetSim** | Simulation-grade fleet trust-state and degraded-control modeling | Current standalone repo/qualification not located; no physical fleet field certification. |
+| **EU AI Act Evidence Readiness** | Read-only evidence mapping for six selected articles and reporting gaps | **86** Oct 14 branch regression tests. Does not establish legal/regulatory conformity. |
+| **ReasonForge** | Schema, deduplication, leakage and LLM dataset quality workflow | **12 Oct main smoke CI success**; this is not a comparable full suite test count. |
+| **CalledIt** | Prediction sealing and app surface design | Private source exists; no contemporaneous numeric Actions receipt found. |
 
-## 02 — SAR
-- **Problem:** Consequential actions need externally defined authority and auditable denials.
-- **Design:** Fail-closed policy enforcement, protected policy changes, receipts and independence of governance from execution.
-- **Category:** Private system; April 2026 audit reports 497 Python passes plus 3 environment-gated failures.
-- **Non-claims:** Already integrated across all Razorglint software or deployed as a production fleet-wide control plane.
+These are separate technologies at different stages. The **GCA Stack** is still an integration/source/IP admission candidate; it is not a finished combined product. Supporting systems such as CTLM/LocalChad, PolicySourceEngine, Decision Provenance Tracker, Trust Continuity Mapper, ChessClock and other assets remain part of the broader estate.
 
-## 03 — Viventia
-- **Problem:** Incident response/customer workflows need scoped, intelligible evidence and handoff.
-- **Design:** Local-first scope identity, customer/deployment binding, two intended cockpit projections and isolated deployment qualification. Canonical private source retains legacy `razorglint-sentinel` naming for compatibility.
-- **Category:** Private V1 development, documented P00–P02 qualification; later gates are separate.
-- **Non-claims:** SIEM/EDR, autonomous agents in V1.0, positive incident authorization, general hosted multi-tenancy.
-
-## 04 — VEAC
-- **Problem:** A product should not be the sole judge of its own critical invariants.
-- **Design:** Independent repo/authority, exact target identity, hostile fixtures, retained scars and campaign-defined examiner states.
-- **Category:** Private adversarial assurance technology.
-- **Non-claims:** Universal “SAFE,” external certification, independent customer authorization.
-
-## 05 — Compliance Drift Detector
-- **Problem:** Gaps between policies and classified observed behavior over time.
-- **Design:** Structured batch input, ALIGNED/DRIFTING/VIOLATED/UNDECLARED, recovered history, export and independent JSON consistency verification.
-- **Category:** [Public v0.2 unsigned Windows controlled preview, 76-test Oct 16 CI](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/docs/RELEASE_STATUS.md).
-- **Non-claims:** Live log collection, freeform PDF interpretation, legally valid compliance verdict, signed publisher identity, authentic truth of supplied source records.
-
-## 06 — OpenClaw
-- **Problem:** Agent decisions/actions need separately governed boundaries and evidence.
-- **Design:** Historical dual-write, policy, trust, denial and Truthpack export test families.
-- **Category:** April 2026 **1,578 passing / 156 skipped** tests; local/upstream source/IP rights require requalification for admission to GCA.
-- **Non-claims:** A finished transferable clean-room runtime or universal agent bypass prevention.
-
-## 07 — Voidlock
-- **Problem:** Execution capabilities need denial and attenuation rather than indefinite privilege.
-- **Design:** Deny-first capability model, monotonic budgets, collapse and judge mechanisms.
-- **Category:** Historical April **54 passing** local tests.
-- **Non-claims:** Certified OS/process sandbox or absence of any escape vector.
-
-## 08 — Blackiron
-- **Problem:** Evidence pipelines need deterministic, inspectable cryptographic primitives.
-- **Design:** Rust SHA-256 hash chains, Merkle tree conventions, hybrid logical clock/receipt concepts.
-- **Category:** Historical **53 passing** tests; current source/dependency/IP diligence pending.
-- **Non-claims:** Independently certified crypto library or global input authenticity.
-
-## 09 — ProofChain
-- **Problem:** Audit history needs traceable ordering, correlation and inspectable integrity.
-- **Design:** Local append-only chains, Merkle accumulator, typed records and validation/export.
-- **Category:** Historical/local implementation; current repo/qualification/transfer package must be reviewed.
-- **Non-claims:** Currently public production ledger.
-
-## 10 — SealVault
-- **Problem:** Evidence batches need digest identity, possible inclusion/signing and offline verification.
-- **Design:** Historic local hash-only flows, Merkle inclusion, optional Ed25519 signing and layered non-proofs.
-- **Category:** Historical/local source; requalify implementation, dependency and ownership.
-- **Non-claims:** Every exported report digitally signed, or input truth verified.
-
-## 11 — Command Guardian
-- **Problem:** Terminal execution requires bounded guardrails, authorizations and receipts.
-- **Design:** Deny-first classifier, risky-action handling, SHA-256 receipt chain, sanitization, adversarial fixtures.
-- **Category:** Historical **131 passing** tests; **hardened prototype**. Repo previously distributed with MIT license.
-- **Non-claims:** Production-ready, SAR integrated, signed receipts, no unknown bypass.
-
-## 12 — FleetSim
-- **Problem:** Trust-state changes and fleet degradation need repeatable test scenarios.
-- **Design:** Heartbeat/distress transitions, severity ladder, trust/reflex receipts.
-- **Category:** Historical **103 passing** simulation tests.
-- **Non-claims:** Real robots/aircraft field safety or certified fleet governance.
-
-## 13 — EU AI Act Evidence Readiness Sprint
-- **Problem:** Regulated workflows need an evidence index and visible gaps.
-- **Design:** Read-only adapters and article mapping for six selected articles (9, 11, 12, 13, 14, 15).
-- **Category:** Historical **194 passes**, with environment caveats.
-- **Non-claims:** Full EU AI Act coverage, certification, legal advice or conformity assessment.
-
-## 14 — ReasonForge
-- **Problem:** Fine-tuning/evaluation data may contain schema errors, duplications and leakage.
-- **Design:** Data validation and evaluation tooling, self-service showroom concepts and reporting.
-- **Category:** Separate private/source-available asset under distinct terms; no fresh standalone test claim made by this architecture audit.
-- **Non-claims:** Production-quality output guarantee or current revenue/market traction.
-
-## 15 — CalledIt
-- **Problem:** Time-bound predictions benefit from encrypted sealing and planned reveal.
-- **Design:** FastAPI/SQLite backend, AES-256-GCM, anonymous device authentication, React PWA, Android Capacitor and Windows Tauri wrappers.
-- **Category:** Private source; current customers/revenue not verified in this audit.
-- **Non-claims:** Cryptographic impossibility of every possible cheating strategy or public general availability.
-
-## Wider asset estate and projects
-Additional distinct code, sub-engine, historical source or concept boundaries include **CTLM/LocalChad, ChessClock, Isengard, VerdictGate, PolicySourceEngine, Phantom Ledger, Trust Continuity Mapper, Decision Provenance Tracker, ForgeCell, Rust Modules, Truthpacks, BountyPipeline, Developer Supply-Chain Exposure Proof Kit** and the **GCA Stack** candidate integration. Their inclusion in this text is not component admission, an available license, a completed asset or transferable ownership.
-
-**Source discipline:** For numeric claims, use the [dated register](../PUBLIC_EVIDENCE_REGISTER_2026-10-16.md), not this descriptive index alone.
+**No source or test number becomes “current” without its exact reference, execution scope and date.** [Architecture front page](../README.md) · [Audit](CURRENT_TEST_EVIDENCE_2026-10-16.md)
