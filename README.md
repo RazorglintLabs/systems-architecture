@@ -1,45 +1,67 @@
-# Razorglint Labs | Systems Architecture
+<div align="center">
+
+# RAZORGLINT LABS
+### SYSTEMS ARCHITECTURE
+
 **Govern the action. Preserve the record. Challenge the claim.**
 
-Razorglint builds deterministic and security-aware engineering systems. The central question is not whether software reports **PASS**. It is **which source, authority and test support that result, and what remains unproven**.
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
+
+**[PROOF](#three-concrete-engineering-surfaces) · [ENGINEERING](#engineering-methods) · [QUALIFICATION](#the-evidence-register) · [FOUNDER](https://github.com/RazorglintLabs/damian-ketting-ai-systems-portfolio)**
+
+</div>
+
+---
+
+Razorglint develops independent software systems for **controlled automation, evidence continuity and testable claims**. Python, Go, Rust and TypeScript appear across **different** portfolio components. These language badges reflect portfolio exposure, **not** a claim that all systems share one stack or production release.
 
 ## Three concrete engineering surfaces
 
-| Surface | What it does | Evidence available |
+| System | Engineering capability | Evidence |
 | --- | --- | --- |
-| **[Compliance Drift Detector](https://github.com/RazorglintLabs/ComplianceDriftDetector)** | Analyzes structured, operator-classified policy observations over dated checkpoints; exports reports and consistency-verifiable JSON. | [16 Oct 2026: 76 passing tests in Windows/Linux CI, accepted unsigned Windows controlled preview](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/docs/RELEASE_STATUS.md). Source data authenticity and regulatory compliance are **not** established. |
-| **Viventia / VEAC** | Local-first incident evidence presentation and a **separate** adversarial examiner. | Private, active V1 engineering with explicit scoped assurance. **No G4 controlled pilot or enterprise release claim**; authorization and test results remain tied to specific branches and propositions. |
-| **Prestige-Reforged** | Source-bound evidence, claims, history and product search/verification work. | Private staged qualification; Windows customer release remains gated. Its current work is **not** the historical public Prestige Forge claim-safety demo. |
+| **[Compliance Drift Detector](https://github.com/RazorglintLabs/ComplianceDriftDetector)** | Deterministic policy-to-observation checkpoint analysis, recovery history and independently verifiable exported JSON | **76 passing Windows/Linux CI regressions** (16 Oct 2026); [public source/build receipt](https://github.com/RazorglintLabs/ComplianceDriftDetector/blob/main/docs/RELEASE_STATUS.md). Controlled unsigned Windows preview; no source-data authentication or regulatory certification |
+| **Viventia + VEAC** | Local-first incident evidence presentation, two operator perspectives from governed truth, separate scoped adversarial challenge | **Active private V1 engineering**; G4 controlled pilot and customer release not claimed complete |
+| **Prestige-Reforged** | Versioned source/evidence, claim evaluation and local search-interface work | **Private staged qualification** and gated Windows acceptance; distinct from the earlier [Prestige Forge historical demonstration](https://github.com/RazorglintLabs/prestige-forge-product) |
 
-A separate browser-regression example is documented in the [founder's Playwright QA case study](https://github.com/RazorglintLabs/damian-ketting-ai-systems-portfolio/blob/main/PLAYWRIGHT_QA_CASE_2026-11-20.md): **9 passing Chromium tests in a 20 Nov 2026 private CI run**, with source access restricted.
+## Engineering methods
 
-## Engineering rule
+These are **separate, rights-controlled engineering tools and research**, not a single autonomous development platform.
+
+| Method / research | What it demonstrates | Public case |
+| --- | --- | --- |
+| **Blueprint Roundtrip Engine (BRE)** | Source-pinned review, bounded JSON repair candidates, regression-to-evidence handoff | [BRE case study](https://github.com/RazorglintLabs/damian-ketting-ai-systems-portfolio/blob/main/CASE_BRE_2026-11-20.md) |
+| **Elite Bounty Pantry** | Deterministic eligibility gates, JSON oracle, evidence ZIP verification and blocked manual handoff | [Elite Pantry case study](https://github.com/RazorglintLabs/damian-ketting-ai-systems-portfolio/blob/main/CASE_ELITE_PANTRY_2026-11-20.md) |
+| **Proton-related research** | Public-source reading, offline synthetic fixtures and permission-model regression methodology | [Scope-limited research case](https://github.com/RazorglintLabs/damian-ketting-ai-systems-portfolio/blob/main/CASE_PROTON_RESEARCH_2026-11-20.md); **no vendor vulnerability or payout asserted** |
+| **Playwright browser QA** | Chromium navigation, viewport and HTTP contract testing via GitHub Actions | [9/9 tests, 20 Nov 2026, private draft CI](https://github.com/RazorglintLabs/damian-ketting-ai-systems-portfolio/blob/main/PLAYWRIGHT_QA_CASE_2026-11-20.md) |
+
+## Architecture discipline
 
 ```text
-EXPLICIT AUTHORITY
-       |
-GOVERN / REFUSE
-       |
-OBSERVE + PRESERVE
-       |
-VERIFY SOURCE-BOUND EVIDENCE
-       |
-CHALLENGE INDEPENDENTLY
-       |
-CLAIM ONLY WHAT THE RESULT SUPPORTS
+EXPLICIT HUMAN / POLICY AUTHORITY
+                ↓
+          GOVERN OR REFUSE
+                ↓
+         OBSERVE + PRESERVE
+                ↓
+     VERIFY SOURCE-BOUND EVIDENCE
+                ↓
+        INDEPENDENT CHALLENGE
+                ↓
+       REPORT PROVEN / UNKNOWN
 ```
 
-- Hash integrity is not proof that an external source told the truth.
-- A feature-branch green check does not qualify another branch.
-- An independent examiner's scoped finding is not a universal safety certificate.
-- Multiple separate systems appearing in one diagram does **not** make them a deployed integrated platform.
+**Boundaries matter:** a valid hash is not external-world truth; a passing test does not certify a product; source references do not imply redistribution rights; distinct systems are not automatically deployed together.
 
-## Inspect the evidence
+## The evidence register
 
-The full [15-system profile](docs/SYSTEM_PROFILES_2026-10-16.md) and [October 2026 test register](docs/CURRENT_TEST_EVIDENCE_2026-10-16.md) remain available for technical diligence. Their recorded **2,325-case subtotal** combines **different dated suites**, including private/local evidence; it is **not** a fresh 20 November portfolio-wide execution. The [April historical audit](assets/proof/PROOF_AUDIT_2026-04-26.md) is likewise not a current acceptance test.
+[15-system historical qualification matrix](docs/CURRENT_TEST_EVIDENCE_2026-10-16.md) · [Full engineering profiles](docs/SYSTEM_PROFILES_2026-10-16.md) · [Verification approach](docs/VERIFICATION_PLAYBOOK.md) · [Rights and delivery boundaries](docs/IP_AND_DELIVERY_BOUNDARIES.md)
 
-For operational problems and bounded technology fit, see [Pain to Proof](https://github.com/RazorglintLabs/razorglint-pain-to-proof-map). For independent engineering, QA contracts and case studies, see [Damian G. L. Ketting's portfolio](https://github.com/RazorglintLabs/damian-ketting-ai-systems-portfolio).
+The earlier **2,325-case selected-suite subtotal** combines distinct **dated** qualification snapshots, including private/local evidence. It is **not** a fresh 20 November execution across the engineering estate. The [April 2026 audit](assets/proof/PROOF_AUDIT_2026-04-26.md) is historical.
 
-**Engineering and partnership contact:** [razorglint.ops@protonmail.com](mailto:razorglint.ops@protonmail.com)
+**Engineering collaborations:** [Damian G. L. Ketting](https://github.com/RazorglintLabs/damian-ketting-ai-systems-portfolio) · [razorglint.ops@protonmail.com](mailto:razorglint.ops@protonmail.com)
 
-*Razorglint Labs / TCOG Collective LLC · 20 November 2026. This is an architecture/evidence index, not an integrated installer, certification or open-source grant.*
+<sub>Razorglint Labs / TCOG Collective LLC · 20 November 2026. Public architecture/evidence index, not an installer, certified integration, customer deployment or source license.</sub>
